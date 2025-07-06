@@ -1,5 +1,6 @@
 from stats import get_word_count
 from stats import get_char_stats
+from stats import split_sort
 
 def get_book_text(book_path):
     #reads a file and returns it as a string
@@ -9,11 +10,21 @@ def get_book_text(book_path):
 
 def main():
     # main function
-    book_path = "./books/frankenstein.txt"
+    book_path = "books/frankenstein.txt"
     book_string = get_book_text(book_path)
     word_count = get_word_count(book_string)
     char_stats = get_char_stats(book_string)
-    print(f"{word_count} words found in the document")
-    print(char_stats)
+    sorted_dict = split_sort(char_stats)
+
+    #The following is fornmatting for the report
+    print("============ BOOKBOT ============")
+    print(f"Analyzing book found at {book_path}...")
+    print("----------- Word Count ----------")
+    print(f"Found {word_count} total words")
+    print ("--------- Character Count -------")
+    for item in sorted_dict:
+        if item["name"].isalpha():
+            print(f"{item["name"]}: {item["num"]}")
+    print("============= END ===============")
 
 main()

@@ -27,4 +27,6 @@ def split_sort(char_dict):
 
     split_list = [{"name": key, "num": value} for key,value in char_dict.items()]
 
-    return split_list.sort(reverse=True, key=sort_on)
+    split_list.sort(reverse=True, key=sort_on)
+
+    return split_list
