@@ -18,3 +18,13 @@ def get_char_stats(file_string):
             char_dict[char] = 1
     
     return char_dict
+
+def sort_on(items):
+    return items["num"]
+
+def split_sort(char_dict):
+    #takes char stats dict, splits and sorts it
+
+    split_list = [{"name": key, "num": value} for key,value in char_dict.items()]
+
+    return split_list.sort(reverse=True, key=sort_on)
