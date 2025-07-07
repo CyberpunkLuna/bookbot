@@ -1,6 +1,7 @@
 from stats import get_word_count
 from stats import get_char_stats
 from stats import split_sort
+import sys
 
 def get_book_text(book_path):
     #reads a file and returns it as a string
@@ -10,7 +11,10 @@ def get_book_text(book_path):
 
 def main():
     # main function
-    book_path = "books/frankenstein.txt"
+    if len(sys.argv) < 2:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+    book_path = sys.argv[1]
     book_string = get_book_text(book_path)
     word_count = get_word_count(book_string)
     char_stats = get_char_stats(book_string)
